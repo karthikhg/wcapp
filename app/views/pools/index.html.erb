@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cricket World Cup 2015</h1>
+
+
+<div class="table-responsive table-custom">
+<div class="field">
+  <%= link_to 'New Match', new_match_path %>  
+</div>
+<% @pools.each do |pool| %>
+<table class="table table-condensed">
+  <h2><%= pool.name %></h2>
+  <thead class="tblhead">
+    <tr>
+      <th>Position</th>
+      <th>Team</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Ties</th>
+      <th>NRR</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% pool.teams.order("points DESC","nrr DESC").each_with_index do |team, idx| %>
+      <tr>
+        <td><%= idx+1 %></td>
+        <td><%= link_to team.name, team_matches_path(team) %></td>
+        <td><%= team.wins %></td>
+        <td><%= team.losses %></td>
+        <td><%= team.ties %></td>
+        <td><%= team.nrr.round(3) %></td>
+        <td><%= team.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<h2>Knockouts</h2>
+<h5>Quarter Finals</h5>
+  (1) <%= @pools.first.teams.order("points DESC","nrr DESC").first.name %> vs 
+  <%= @pools.second.teams.order("points DESC","nrr DESC").fourth.name %> <br>
+  (2) <%= @pools.first.teams.order("points DESC","nrr DESC").second.name %> vs 
+  <%= @pools.second.teams.order("points DESC","nrr DESC").third.name %> <br>
+  (3) <%= @pools.first.teams.order("points DESC","nrr DESC").third.name %> vs 
+  <%= @pools.second.teams.order("points DESC","nrr DESC").second.name %> <br>
+  (4) <%= @pools.first.teams.order("points DESC","nrr DESC").fourth.name %> vs 
+  <%= @pools.second.teams.order("points DESC","nrr DESC").first.name %> <br>
+<h5>Semi Finals</h5>
+<h5>Final</h5>
+

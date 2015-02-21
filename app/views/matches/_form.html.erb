@@ -1,0 +1,57 @@
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :team1_name %><br>
+    <%= f.select :team1_id, options_from_collection_for_select(Team.all, "id", "name") %>
+  </div>
+  <div class="field">
+    <%= f.label :team1_total %><br>
+    <%= f.number_field :team1_total %>
+  </div>
+  <div class="field">
+    <%= f.label :team1_wickets %><br>
+    <%= f.number_field :team1_wickets %>
+  </div>
+  <div class="field">
+    <%= f.label :team1_overs %><br>
+    <%= f.text_field :team1_overs %>
+  </div>
+  <div class="field">
+    <%= label_tag :team2_name %><br>
+    <%= f.select :team2_id, options_from_collection_for_select(Team.all, "id", "name") %>
+  </div>
+  <div class="field">
+    <%= f.label :team2_total %><br>
+    <%= f.number_field :team2_total %>
+  </div>
+  <div class="field">
+    <%= f.label :team2_wickets %><br>
+    <%= f.number_field :team2_wickets %>
+  </div>
+  <div class="field">
+    <%= f.label :team2_overs %><br>
+    <%= f.text_field :team2_overs %>
+  </div>
+  <div class="field">
+    <%= f.label :tie %><br>
+    <%= f.check_box :tie %>
+  </div>
+  <div class="field">
+    <%= f.label :stage %><br>
+    <%= f.select :stage, ["group", "quarters", "semis", "final"] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

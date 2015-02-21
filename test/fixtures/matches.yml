@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team1_id: 1
+  team2_id: 1
+  team1_total: 1
+  team2_total: 1
+  team1_wickets: 1
+  team2_wickets: 1
+  team1_overs: 1
+  team2_overs: 1
+  winner: 1
+  tie: false
+
+two:
+  team1_id: 1
+  team2_id: 1
+  team1_total: 1
+  team2_total: 1
+  team1_wickets: 1
+  team2_wickets: 1
+  team1_overs: 1
+  team2_overs: 1
+  winner: 1
+  tie: false

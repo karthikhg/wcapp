@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Matches</h1>
+
+<div class="table-responsive table-custom">
+<table class="table table-striped">
+  <thead class="tblhead">
+    <tr>
+      <th>Team 1</th>
+      <th>Total</th>
+      <th>Wickets</th>
+      <th>Overs</th>
+      <th>Team 2</th>
+      <th>Total</th>
+      <th>Wickets</th>
+      <th>Overs</th>
+      <th>Winner</th>
+      <th>Tie</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= Team.find(match.team1_id).name %></td>
+        <td><%= match.team1_total %></td>
+        <td><%= match.team1_wickets %></td>
+        <td><%= match.team1_overs %></td>
+        <td><%= Team.find(match.team2_id).name %></td>
+        <td><%= match.team2_wickets %></td>
+        <td><%= match.team2_overs %></td>
+        <td><%= match.team2_total %></td>
+        <% unless match.tie %>
+          <td><%= Team.find(match.winner).name %></td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+        <td><%= match.tie %></td>
+        <td><%= link_to 'Edit', edit_match_path(match) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Match', new_match_path %>
